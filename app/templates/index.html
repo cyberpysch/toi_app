@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TOI News Flashcards</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+  <header>
+    <h1>TOI News Flashcards</h1>
+  </header>
+
+  <main id="articles-container">
+    {% for article in articles %}
+    <div class="card">
+      <h2 class="title">{{ article.title }}</h2>
+
+      {% if article.article_img %}
+      <div class="img-container">
+        <img src="{{ article.article_img }}" class="article-img" alt="Article Image">
+      </div>
+      {% endif %}
+
+      <a href="{{ article.url }}" target="_blank" class="read-full-btn">Read Full Article</a>
+      <div class="container">
+        <p>{{ article.summary }}</p>
+      </div>
+      <div class="collapsible-section">
+        <button class="toggle-btn" onclick="toggleSection(this)">
+          <span class="icon">+</span> Facts
+        </button>
+        <ul class="facts-list">
+          {% for fact in article.facts %}
+          <li>{{ fact }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="collapsible-section">
+        <button class="toggle-btn" onclick="toggleSection(this)">
+          <span class="icon">+</span> MCQs
+        </button>
+        <ul class="mcqs-list">
+          {% for mcq in article.mcqs %}
+          <li>{{ mcq }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    {% endfor %}
+  </main>
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

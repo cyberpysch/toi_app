@@ -1,0 +1,128 @@
+/* Reset */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: #f4f4f4;
+    color: #333;
+    padding-bottom: 50px;
+}
+
+header {
+    background: linear-gradient(135deg, #007BFF, #00CFFF);
+    color: white;
+    padding: 20px 15px;
+    text-align: center;
+    font-size: 1.8em;
+    font-weight: bold;
+    border-radius: 0 0 20px 20px; /* Rounded bottom corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header h1 {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    animation: slideIn 1s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.card {
+    background: #fff;
+    border-radius: 12px;
+    margin: 15px;
+    padding: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+}
+
+.title {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.img-container {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.article-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.article-img:hover {
+    transform: scale(1.05);
+}
+
+.read-full-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: #28a745;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.collapsible-section {
+    margin-bottom: 10px;
+}
+
+.toggle-btn {
+    width: 100%;
+    padding: 8px;
+    background: #17a2b8;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: left;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.toggle-btn .icon {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.facts-list, .mcqs-list {
+    display: none;
+    margin-top: 5px;
+    padding-left: 20px;
+    color: #555;
+}
+
+.facts-list li, .mcqs-list li {
+    margin-bottom: 5px;
+}
