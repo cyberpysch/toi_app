@@ -9,6 +9,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     padding: 24px 16px 80px;
+    overflow: hidden; /* Prevent scrolling on the body */
 }
 
 .container {
@@ -33,6 +34,9 @@ header.app-header {
 
 /* Swiper container: center and give room for stacked cards */
 .swiper-container { width: 100%; padding: 28px 0; }
+.swiper-container {
+    overflow-y: auto; /* Allow scrolling only within the Swiper container */
+}
 .swiper-wrapper { align-items: center; }
 
 /* Card stack look */
@@ -54,7 +58,7 @@ header.app-header {
 .article-img { width: 100%; height: 220px; object-fit: cover; transition: transform 0.35s ease; display:block; }
 .article-img:hover { transform: scale(1.03); }
 
-.summary { color: #374151; line-height: 1.45; font-size: 0.98rem; max-height: 6.5rem; overflow: hidden; }
+.summary { color: #374151; line-height: 1.45; font-size: 0.98rem; max-height: 20rem; overflow: hidden; }
 
 .read-full-btn {
     display: inline-block; padding: 10px 14px; align-self: start;
@@ -93,9 +97,9 @@ header.app-header {
     width: 100%; max-width: 900px; background: linear-gradient(180deg,#ffffff 0%, #fbfdff 100%);
     border-radius: 16px 16px 6px 6px; padding: 18px; box-shadow: 0 30px 80px rgba(2,6,23,0.36);
     transform: translateY(24px); opacity: 0; transition: transform 260ms cubic-bezier(.2,.9,.2,1), opacity 220ms ease;
-    max-height: 82vh; overflow-y: auto;
+    max-height: 82vh; 
 }
-.fullscreen-overlay.active .fullscreen-content { transform: translateY(0); opacity: 1; }
+
 .close-btn { position: absolute; top: 10px; right: 14px; background: none; border: none; font-size: 1.6rem; cursor: pointer; color: #7f1d1d; }
 
 .modal-title { font-size: 1.1rem; font-weight: 800; margin-bottom: 8px; }
