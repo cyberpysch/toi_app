@@ -21,14 +21,14 @@ body {
 header.app-header {
     background: linear-gradient(90deg,#b21a22 0%, #8b0f13 100%);
     color: #fff;
-    padding: 8px 12px; /* Reduce padding */
-    font-size: 1.2rem; /* Smaller font size for H1 */
+    padding: 6px 10px; /* Reduce padding */
+    font-size: 1rem; /* Smaller font size for H1 */
     line-height: 1.2; /* Compact line height */
     font-weight: 700;
-    border-radius: 12px;
+    border-radius: 10px;
     box-shadow: 0 8px 30px rgba(11,22,36,0.12);
     position: sticky;
-    top: 12px;
+    top: 10px;
     z-index: 1000;
     text-align: center; /* Center the text */
 }
