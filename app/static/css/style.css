@@ -1,128 +1,110 @@
 /* Reset */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
+/* Body & layout */
 body {
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    background: #f4f4f4;
-    color: #333;
-    padding-bottom: 50px;
+    font-family: Inter, 'Segoe UI', Roboto, system-ui, -apple-system, 'Helvetica Neue', Arial;
+    background: linear-gradient(180deg, #f6f7fb 0%, #eef2f7 100%);
+    color: #1f2937;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    padding: 24px 16px 80px;
 }
 
-header {
-    background: linear-gradient(135deg, #007BFF, #00CFFF);
-    color: white;
-    padding: 20px 15px;
+.container {
+    max-width: 820px;
+    margin: 16px auto;
+}
+
+/* Header */
+header.app-header {
+    background: linear-gradient(90deg,#b21a22 0%, #8b0f13 100%);
+    color: #fff;
+    padding: 18px 22px;
     text-align: center;
-    font-size: 1.8em;
-    font-weight: bold;
-    border-radius: 0 0 20px 20px; /* Rounded bottom corners */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    font-size: 1.6rem;
+    font-weight: 700;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(11,22,36,0.12);
     position: sticky;
-    top: 0;
+    top: 12px;
     z-index: 1000;
 }
 
-header h1 {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    letter-spacing: 1px;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-    animation: slideIn 1s ease-out;
-}
+/* Swiper container: center and give room for stacked cards */
+.swiper-container { width: 100%; padding: 28px 0; }
+.swiper-wrapper { align-items: center; }
 
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-
+/* Card stack look */
 .card {
-    background: #fff;
-    border-radius: 12px;
-    margin: 15px;
-    padding: 15px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    transition: transform 0.2s;
-}
-
-.card:hover {
-    transform: translateY(-2px);
-}
-
-.title {
-    font-size: 1.2em;
-    margin-bottom: 10px;
-}
-
-.img-container {
+    background: linear-gradient(180deg,#ffffff 0%, #fbfdff 100%);
+    border-radius: 14px;
+    padding: 18px;
+    margin: 0 auto;
+    box-shadow: 0 12px 30px rgba(17,24,39,0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
     width: 100%;
-    overflow: hidden;
-    border-radius: 10px;
-    margin-bottom: 10px;
+    max-width: 760px;
 }
 
-.article-img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-    transition: transform 0.3s;
-}
+.card .title { font-size: 1.25rem; margin-bottom: 6px; font-weight: 700; color: #0f172a; }
+.img-container { width: 100%; overflow: hidden; border-radius: 10px; margin-bottom: 6px; }
+.article-img { width: 100%; height: 220px; object-fit: cover; transition: transform 0.35s ease; display:block; }
+.article-img:hover { transform: scale(1.03); }
 
-.article-img:hover {
-    transform: scale(1.05);
-}
+.summary { color: #374151; line-height: 1.45; font-size: 0.98rem; max-height: 6.5rem; overflow: hidden; }
 
 .read-full-btn {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background: #28a745;
-    color: white;
-    text-decoration: none;
-    border-radius: 8px;
-    text-align: center;
-    font-weight: bold;
-    margin-bottom: 10px;
+    display: inline-block; padding: 10px 14px; align-self: start;
+    background: #0ea5a4; color: white; text-decoration: none;
+    border-radius: 10px; font-weight: 700; box-shadow: 0 6px 18px rgba(14,165,164,0.12);
 }
 
-.collapsible-section {
-    margin-bottom: 10px;
+/* Bottom buttons */
+.card-buttons { display: flex; gap: 10px; margin-top: 6px; }
+.card-buttons button {
+    flex: 1; padding: 10px 12px; border: none; cursor: pointer;
+    border-radius: 10px; font-weight: 700; color: white;
+    background: linear-gradient(180deg,#a6141a 0%,#7f0f13 100%);
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.card-buttons button:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(11,22,36,0.12); }
+.card-buttons .mcq-btn { background: linear-gradient(180deg,#0b78a1 0%, #075f83 100%); }
+
+/* Hidden content for modal kept in DOM but visually hidden */
+.hidden-content { display: none; }
+
+/* Swiper active/perspective effects for Tinder-like feel */
+.swiper-slide { display: flex; justify-content: center; align-items: center; }
+.swiper-slide .card { transform-origin: center bottom; transition: transform 0.28s cubic-bezier(.2,.9,.2,1), box-shadow 0.28s; }
+.swiper-slide-prev .card { transform: translateX(-12px) scale(0.98) rotate(-1deg); opacity: 0.95; }
+.swiper-slide-next .card { transform: translateX(12px) scale(0.98) rotate(1deg); opacity: 0.95; }
+.swiper-slide-active .card { transform: translateY(-6px) scale(1.02); box-shadow: 0 20px 50px rgba(15,23,42,0.12); }
+
+/* Fullscreen bottom-sheet modal */
+.fullscreen-overlay {
+    position: fixed; inset: 0; display: flex; justify-content: center; align-items: flex-end;
+    background: rgba(2,6,23,0.48); z-index: 2000; opacity: 0; pointer-events: none; transition: opacity 220ms ease;
+}
+.fullscreen-overlay.active { opacity: 1; pointer-events: auto; }
+.fullscreen-content {
+    width: 100%; max-width: 900px; background: linear-gradient(180deg,#ffffff 0%, #fbfdff 100%);
+    border-radius: 16px 16px 6px 6px; padding: 18px; box-shadow: 0 30px 80px rgba(2,6,23,0.36);
+    transform: translateY(24px); opacity: 0; transition: transform 260ms cubic-bezier(.2,.9,.2,1), opacity 220ms ease;
+    max-height: 82vh; overflow-y: auto;
+}
+.fullscreen-overlay.active .fullscreen-content { transform: translateY(0); opacity: 1; }
+.close-btn { position: absolute; top: 10px; right: 14px; background: none; border: none; font-size: 1.6rem; cursor: pointer; color: #7f1d1d; }
+
+.modal-title { font-size: 1.1rem; font-weight: 800; margin-bottom: 8px; }
+.modal-body p { margin-bottom: 8px; color: #334155; }
+
+/* Small responsive tweaks */
+@media (max-width: 640px) {
+    .article-img { height: 160px; }
+    .card { padding: 14px; }
+    header.app-header { font-size: 1.2rem; }
 }
 
-.toggle-btn {
-    width: 100%;
-    padding: 8px;
-    background: #17a2b8;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    text-align: left;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.toggle-btn .icon {
-    font-weight: bold;
-    margin-right: 5px;
-}
-
-.facts-list, .mcqs-list {
-    display: none;
-    margin-top: 5px;
-    padding-left: 20px;
-    color: #555;
-}
-
-.facts-list li, .mcqs-list li {
-    margin-bottom: 5px;
-}
