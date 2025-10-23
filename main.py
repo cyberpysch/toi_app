@@ -29,7 +29,7 @@ logger = logging.getLogger("toi-scraper")
 Base.metadata.create_all(bind=engine)
 
 # OpenAI client
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+client = OpenAI(api_key="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")
 
 # Scraper settings
 BASE_DOMAIN = "https://timesofindia.indiatimes.com"
