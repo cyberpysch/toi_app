@@ -51,6 +51,11 @@ header.app-header {
     gap: 12px;
     width: 100%;
     max-width: 760px;
+    height: 100%; /* Make the card take full height of the container */
+    max-height: 100vh; /* Ensure it doesn't exceed the viewport height */
+    width: 100%; /* Make the card take full width */
+    max-width: 100%; /* Prevent overflow on smaller screens */
+    box-sizing: border-box; /* Include padding and border in dimensions */
 }
 
 .card .title { font-size: 1.25rem; margin-bottom: 6px; font-weight: 700; color: #0f172a; }
@@ -110,5 +115,10 @@ header.app-header {
     .article-img { height: 160px; }
     .card { padding: 14px; }
     header.app-header { font-size: 1.2rem; }
+}
+
+/* Adjust Swiper container for mobile */
+.swiper-container {
+    height: 100vh; /* Ensure the container takes full viewport height */
 }
 
