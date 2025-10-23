@@ -44,21 +44,25 @@
           <!-- Hidden content for modal -->
           <div id="facts-{{ loop.index0 }}" class="hidden-content">
             {% if article.facts %}
-              {% for fact in article.facts %}
-              <p>{{ fact }}</p>
-              {% endfor %}
+              <ul class="modal-list">
+                {% for fact in article.facts %}
+                <li class="modal-item">{{ fact }}</li>
+                {% endfor %}
+              </ul>
             {% else %}
-              <p>No facts available for this article.</p>
+              <p class="modal-empty">No facts available for this article.</p>
             {% endif %}
           </div>
 
           <div id="mcqs-{{ loop.index0 }}" class="hidden-content">
             {% if article.mcqs %}
-              {% for mcq in article.mcqs %}
-              <p>{{ mcq }}</p>
-              {% endfor %}
+              <ul class="modal-list">
+                {% for mcq in article.mcqs %}
+                <li class="modal-item">{{ mcq }}</li>
+                {% endfor %}
+              </ul>
             {% else %}
-              <p>No MCQs available for this article.</p>
+              <p class="modal-empty">No MCQs available for this article.</p>
             {% endif %}
           </div>
 

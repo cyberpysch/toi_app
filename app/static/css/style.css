@@ -8,7 +8,7 @@ body {
     color: #1f2937;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    padding: 24px 16px 80px;
+    padding: 16px 12px; /* Reduce vertical padding */
     overflow: hidden; /* Prevent scrolling on the body */
 }
 
@@ -21,8 +21,8 @@ body {
 header.app-header {
     background: linear-gradient(90deg,#b21a22 0%, #8b0f13 100%);
     color: #fff;
-    padding: 10px 16px; /* Reduce padding */
-    font-size: 1.4rem; /* Slightly smaller font size */
+    padding: 8px 12px; /* Reduce padding */
+    font-size: 1.2rem; /* Smaller font size for H1 */
     line-height: 1.2; /* Compact line height */
     font-weight: 700;
     border-radius: 12px;
@@ -30,6 +30,7 @@ header.app-header {
     position: sticky;
     top: 12px;
     z-index: 1000;
+    text-align: center; /* Center the text */
 }
 
 /* Swiper container: center and give room for stacked cards */
@@ -108,10 +109,62 @@ header.app-header {
     transition: transform 260ms cubic-bezier(.2,.9,.2,1), opacity 220ms ease;
 }
 
+/* Enhance modal styles for better appearance */
+.fullscreen-content {
+    background: linear-gradient(180deg, #ffffff, #f9f9f9); /* Subtle gradient background */
+    border: 2px solid #e5e7eb; /* Add a light border */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Add a soft shadow */
+    padding: 24px; /* Increase padding for better spacing */
+    border-radius: 20px; /* Rounder corners */
+}
+
 .close-btn { position: absolute; top: 10px; right: 14px; background: none; border: none; font-size: 1.6rem; cursor: pointer; color: #7f1d1d; }
+.close-btn {
+    font-size: 1.8rem; /* Larger close button */
+    color: #9ca3af; /* Softer color */
+    transition: color 0.2s ease; /* Smooth hover effect */
+}
+.close-btn:hover {
+    color: #6b7280; /* Darker color on hover */
+}
 
 .modal-title { font-size: 1.1rem; font-weight: 800; margin-bottom: 8px; }
+.modal-title {
+    font-size: 1.5rem; /* Larger title font */
+    font-weight: bold; /* Emphasize title */
+    color: #1f2937; /* Darker text color */
+    margin-bottom: 16px; /* Add spacing below title */
+    text-align: center; /* Center the title */
+}
+
 .modal-body p { margin-bottom: 8px; color: #334155; }
+.modal-body p {
+    font-size: 1rem; /* Slightly larger text */
+    line-height: 1.6; /* Improve readability */
+    color: #374151; /* Neutral text color */
+    margin-bottom: 12px; /* Add spacing between paragraphs */
+}
+
+/* Style modal content beautifully */
+.modal-list {
+    list-style-type: disc; /* Use a disc for list items */
+    padding-left: 20px; /* Add padding for better alignment */
+    margin: 0;
+}
+
+.modal-item {
+    font-size: 1rem; /* Standard font size */
+    line-height: 1.6; /* Improve readability */
+    color: #374151; /* Neutral text color */
+    margin-bottom: 8px; /* Add spacing between items */
+}
+
+.modal-empty {
+    font-size: 1rem; /* Standard font size */
+    color: #9ca3af; /* Subtle gray for empty state */
+    text-align: center; /* Center align the message */
+    margin-top: 16px; /* Add spacing above the message */
+}
 
 /* Small responsive tweaks */
 @media (max-width: 640px) {
