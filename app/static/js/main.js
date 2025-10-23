@@ -63,18 +63,31 @@ function unlockBodyScroll() {
 
 // Generic open modal (type: 'facts' | 'mcqs')
 function openModal(type, index) {
+    console.log(`openModal called with type: ${type}, index: ${index}`); // Debug log
     const content = document.getElementById(`${type}-${index}`);
-    if (!content) return;
+    if (!content) {
+        console.error(`Content not found for type: ${type}, index: ${index}`); // Error log
+        return;
+    }
+    console.log(`Content found:`, content.innerHTML); // Debug log
     // build modal content with header
     const header = `<div class="modal-title">${type === 'facts' ? 'Facts' : 'MCQs'}</div>`;
     bodyContainer.innerHTML = header + '<div class="modal-body">' + content.innerHTML + '</div>';
     overlay.classList.add('active');
     lockBodyScroll();
+    console.log('Modal activated'); // Debug log
 }
 
-// backward-compatible helpers used in template
-function openFacts(index) { openModal('facts', index); }
-function openMcqs(index) { openModal('mcqs', index); }
+// Debugging logs to verify button functionality
+function openFacts(index) {
+    console.log(`openFacts called with index: ${index}`); // Debug log
+    openModal('facts', index);
+}
+
+function openMcqs(index) {
+    console.log(`openMcqs called with index: ${index}`); // Debug log
+    openModal('mcqs', index);
+}
 
 // Close modal
 function closeModal() {

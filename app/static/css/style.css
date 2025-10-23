@@ -94,15 +94,18 @@ header.app-header {
 
 /* Fullscreen bottom-sheet modal */
 .fullscreen-overlay {
-    position: fixed; inset: 0; display: flex; justify-content: center; align-items: flex-end;
+    position: fixed; inset: 0; display: flex; justify-content: center; align-items: center;
     background: rgba(2,6,23,0.48); z-index: 2000; opacity: 0; pointer-events: none; transition: opacity 220ms ease;
 }
 .fullscreen-overlay.active { opacity: 1; pointer-events: auto; }
 .fullscreen-content {
     width: 100%; max-width: 900px; background: linear-gradient(180deg,#ffffff 0%, #fbfdff 100%);
     border-radius: 16px 16px 6px 6px; padding: 18px; box-shadow: 0 30px 80px rgba(2,6,23,0.36);
-    transform: translateY(24px); opacity: 0; transition: transform 260ms cubic-bezier(.2,.9,.2,1), opacity 220ms ease;
-    max-height: 82vh; 
+    transform: translateY(0); /* Ensure modal starts at the correct position */
+    opacity: 1; /* Ensure modal is fully visible */
+    max-height: 90vh; /* Allow more space for content */
+    overflow-y: auto; /* Enable scrolling for large content */
+    transition: transform 260ms cubic-bezier(.2,.9,.2,1), opacity 220ms ease;
 }
 
 .close-btn { position: absolute; top: 10px; right: 14px; background: none; border: none; font-size: 1.6rem; cursor: pointer; color: #7f1d1d; }
