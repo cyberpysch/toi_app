@@ -29,7 +29,8 @@ logger = logging.getLogger("toi-scraper")
 Base.metadata.create_all(bind=engine)
 
 # OpenAI client
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+#client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+client = OpenAI(api_key="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")
 
 # Scraper settings
 BASE_DOMAIN = "https://timesofindia.indiatimes.com"
@@ -109,6 +110,7 @@ def is_current_affairs(article_text):
             messages=[{"role":"system","content":prompt}],
             temperature=0
         )
+        time.sleep(1)
         answer = response.choices[0].message.content.strip().upper()
         return answer == "YES"
     except Exception as e:
@@ -127,6 +129,7 @@ def generate_structured_output(article_text):
             messages=[{"role":"system","content":system_prompt}, {"role":"user","content":article_text}],
             temperature=0.3
         )
+        time.sleep(1)
         return json.loads(response.choices[0].message.content)
     except Exception as e:
         logger.exception("AI generate structured failed: %s", e)
