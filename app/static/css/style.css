@@ -10,6 +10,8 @@ body {
     -moz-osx-font-smoothing: grayscale;
     padding: 16px 12px; /* Reduce vertical padding */
     overflow: hidden; /* Prevent scrolling on the body */
+    transform: scaleY(0.76); /* Scale the height to match the desired view */
+    transform-origin: top; /* Ensure scaling starts from the top */
 }
 
 .container {
@@ -31,35 +33,40 @@ header.app-header {
     top: 10px;
     z-index: 1000;
     text-align: center; /* Center the text */
+    margin-bottom: clamp(4px, 1vw, 8px); /* Reduce spacing */
+}
+
+/* Dynamically handle spacing between header and title */
+.title {
+    margin-top: 0; /* Ensure the title starts immediately after TOI PrepCards */
 }
 
 /* Swiper container: center and give room for stacked cards */
 .swiper-container { width: 100%; padding: 28px 0; }
 .swiper-container {
-    overflow-y: auto; /* Allow scrolling only within the Swiper container */
+    overflow-y: visible; /* Ensure content is not clipped */
 }
 .swiper-wrapper { align-items: center; }
 
-/* Card stack look */
+/* Remove card look and make layout consistent */
 .card {
-    background: linear-gradient(180deg,#ffffff 0%, #fbfdff 100%);
-    border-radius: 14px;
-    padding: 18px;
-    margin: 0 auto;
-    box-shadow: 0 12px 30px rgba(17,24,39,0.08);
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    width: 100%;
-    max-width: 760px;
-    height: 100%; /* Make the card take full height of the container */
-    max-height: 100vh; /* Ensure it doesn't exceed the viewport height */
-    width: 100%; /* Make the card take full width */
-    max-width: 100%; /* Prevent overflow on smaller screens */
-    box-sizing: border-box; /* Include padding and border in dimensions */
+    background: none; /* Remove background */
+    border: none; /* Remove border */
+    box-shadow: none; /* Remove shadow */
+    border-radius: 0; /* Remove rounded corners */
+    padding: 0; /* Remove padding */
+    margin: 0 auto; /* Center content */
+    width: 100%; /* Ensure full width */
+    max-width: none; /* Remove width restriction */
 }
 
-.card .title { font-size: 1.25rem; margin-bottom: 6px; font-weight: 700; color: #0f172a; }
+/* Card stack look */
+.card .title { 
+    font-size: 1.25rem; 
+    margin-bottom: 15px; /* Add margin between title and image */
+    font-weight: 700; 
+    color: #0f172a; 
+}
 .img-container { width: 100%; overflow: hidden; border-radius: 10px; margin-bottom: 6px; }
 .article-img { width: 100%; height: 220px; object-fit: cover; transition: transform 0.35s ease; display:block; }
 .article-img:hover { transform: scale(1.03); }
@@ -73,9 +80,18 @@ header.app-header {
 }
 
 /* Bottom buttons */
-.card-buttons { display: flex; gap: 10px; margin-top: 6px; }
+.card-buttons {
+    display: flex;
+    flex-wrap: wrap; /* Allow buttons to wrap within the container */
+    justify-content: center; /* Center align buttons */
+    gap: 10px;
+    margin-top: 6px;
+    padding-bottom: 16px; /* Add padding to ensure buttons are fully visible */
+}
 .card-buttons button {
-    flex: 1; padding: 10px 12px; border: none; cursor: pointer;
+    flex: 0 1 calc(50% - 10px); /* Ensure buttons take up half the width minus gap */
+    max-width: 100%; /* Prevent overflow */
+    padding: 10px 12px; border: none; cursor: pointer;
     border-radius: 10px; font-weight: 700; color: white;
     background: linear-gradient(180deg,#a6141a 0%,#7f0f13 100%);
     transition: transform 0.12s ease, box-shadow 0.12s ease;
@@ -166,6 +182,11 @@ header.app-header {
     margin-top: 16px; /* Add spacing above the message */
 }
 
+/* Remove Swiper pagination dots */
+.swiper-pagination {
+    display: none; /* Hide pagination dots */
+}
+
 /* Small responsive tweaks */
 @media (max-width: 640px) {
     .article-img { height: 160px; }
@@ -176,5 +197,33 @@ header.app-header {
 /* Adjust Swiper container for mobile */
 .swiper-container {
     height: 100vh; /* Ensure the container takes full viewport height */
+}
+
+/* Responsive adjustments for mobile devices */
+@media (max-width: 768px) {
+    .card {
+        padding: 12px; /* Adjust padding for smaller screens */
+    }
+
+    .article-img {
+        height: 160px; /* Reduce image height for mobile */
+    }
+
+    .summary {
+        font-size: 0.9rem; /* Slightly smaller text for mobile */
+    }
+}
+
+/* Additional styles for very small screens */
+@media (max-width: 480px) {
+    .card-buttons {
+        flex-direction: column; /* Stack buttons vertically */
+        gap: 8px; /* Reduce gap between buttons */
+    }
+
+    .card-buttons button {
+        width: 100%; /* Make buttons take full width */
+        flex: none; /* Disable flex shrinking */
+    }
 }
 
