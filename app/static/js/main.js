@@ -71,7 +71,7 @@ function openModal(type, index) {
     }
     console.log(`Content found:`, content.innerHTML); // Debug log
     // build modal content with header
-    const header = `<div class="modal-title">${type === 'facts' ? 'Facts' : 'MCQs'}</div>`;
+    const header = `<div class="modal-title">${type === 'facts' ? 'Facts' : 'Practice Questions'}</div>`;
     bodyContainer.innerHTML = header + '<div class="modal-body">' + content.innerHTML + '</div>';
     overlay.classList.add('active');
     lockBodyScroll();
